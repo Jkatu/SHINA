@@ -43,6 +43,12 @@ INSTALLED_APPS = [
     'tinymce',
     'fontawesomefree',
     'django_recaptcha',
+    'image_search',
+     'mptt',
+    'feedback',
+    # 'rest_framework',
+    'tensorflow',
+    'tensorflow_hub',
 ]
 # 'Users',
 AUTH_USER_MODEL = 'Users.CustomUser'
@@ -123,6 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
 LOGIN_REDIRECT_URL ='/'
@@ -137,6 +144,10 @@ SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+
+# TensorFlow settings
+TF_MODEL_CACHE = os.path.join(BASE_DIR, 'model_cache')
+
 # Emailing settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -147,6 +158,17 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 PASSWORD_RESET_TIMEOUT = 14400
+
+# File upload settings
+DATA_UPLOAD_MAX_MEMORY_SIZE = 104857600  # 
+FILE_UPLOAD_MAX_MEMORY_SIZE = 104857600
+FILE_UPLOAD_PERMISSIONS = 0o644
+FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o755
+FILE_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  
+DATA_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 10
+
+# Maximum allowed upload size in bytes (default: 10MB)
+MAX_UPLOAD_SIZE = 10 * 1024 * 1024  # 10MB
 
 TINYMCE_DEFAULT_CONFIG = {
     'custom_undo_redo_levels': 100,

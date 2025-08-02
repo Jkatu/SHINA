@@ -24,6 +24,13 @@ urlpatterns = [
     path("", include('SHINA.urls')),
     path('admin/', admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
+    # Image Search
+    path('images/', include('image_search.urls')), 
+    
+    # Feedback
+    path('feedback/', include('feedback.urls')), 
+     path('bulk-upload/', include('image_search.urls')),
+   
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
